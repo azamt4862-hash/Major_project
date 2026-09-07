@@ -6,6 +6,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .container{
@@ -18,6 +19,48 @@ navbar */
 .navbar{
     height: 5rem;
     background-color: white;
+}
+.navbar form {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 2rem;
+    padding: 0.3rem 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+}
+.navbar input[type="search"] {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    padding: 0.5rem 0.8rem;
+    border-radius: 2rem;
+    width: 200px;
+    font-size: 0.9rem;
+}
+.navbar input[type="search"]:focus {
+    width: 260px;
+    transition: width 0.3s ease;
+}
+.btn-search {
+    background-color: #fe424d !important;
+    border: none !important;
+    color: white;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s ease;
+    font-size: 0;
+}
+.btn-search:hover {
+    background-color: #e63946 !important;
+    transform: scale(1.05);
+}
+.btn-search i {
+    font-size: 0.9rem;
 }
 .fa-compass{
     color: #fe424d;
@@ -116,4 +159,82 @@ footer */
 .show-card{
     padding-left: 0;
     padding-right: 0;
+}
+
+@media (max-width: 767.98px) {
+    .navbar {
+        height: auto;
+        min-height: 4.5rem;
+    }
+
+    .navbar-collapse {
+        padding: 0.75rem 0;
+    }
+
+    .navbar-nav {
+        align-items: stretch;
+    }
+
+    .navbar .nav-link {
+        padding: 0.65rem 0;
+    }
+
+    .navbar form {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+
+    .navbar input[type="search"],
+    .navbar input[type="search"]:focus {
+        width: 100%;
+    }
+
+    #filters {
+        gap: 1rem;
+        margin: 0 -0.25rem;
+        padding: 0.5rem 0.25rem 0;
+    }
+
+    .tax-toggle {
+        margin-right: 0.25rem;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .tax-toggle .form-check-label {
+        font-size: 0.8rem;
+    }
+
+    .listing-card {
+        margin-bottom: 1.5rem;
+    }
+
+    .card-img-top {
+        height: min(65vw, 20rem) !important;
+    }
+
+    .show-img {
+        height: auto;
+        aspect-ratio: 4 / 3;
+    }
+
+    .btns {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .btns .btn,
+    .btns form {
+        margin: 0 !important;
+    }
+
+    .f-info {
+        height: auto;
+        min-height: 8rem;
+        padding: 1.25rem 1rem;
+        gap: 0.75rem;
+    }
+
+    .f-info-links {
+        gap: 1rem;
+    }
 }
