@@ -5,17 +5,26 @@ const Listing = require("../models/listing");
 // };
 
 module.exports.index = async (req, res) => {
-    let { category } = req.query; // get category from URL
-
-    let alllistings;
+    let { category, search } = req.query;
+    let filters = {};
 
     if (category) {
-        // filter listings by category
-        alllistings = await Listing.find({ category: category });
-    } else {
-        // show all listings
-        alllistings = await Listing.find({});
+        filters.category = category;
     }
+
+    if (search && search.trim()) {
+        const searchTerm = search.trim().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        const searchRegex = new RegExp(searchTerm, "i");
+        filters.$or = [
+            { title: searchRegex },
+            { description: searchRegex },
+            { location: searchRegex },
+            { country: searchRegex },
+            { category: searchRegex }
+        ];
+    }
+
+    const alllistings = await Listing.find(filters);
 
     res.render("listings/index.ejs", { alllistings });
 };
